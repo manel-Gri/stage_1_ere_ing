@@ -7,10 +7,16 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
+const authRoutes = require('./routes/authRoute');
+const documentRoutes = require('./routes/documentRoutes');
+const chatRoutes = require('./routes/chatRoutes');
 
 // Middlewares de base
 app.use(cors());
 app.use(express.json());
+app.use('/api/auth',authRoutes);
+app.use('/api/documents', documentRoutes);
+app.use('/api/chat', chatRoutes);
 
 // Route de test
 app.get('/', (req, res) => {
